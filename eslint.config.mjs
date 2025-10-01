@@ -9,7 +9,13 @@ export default defineConfig([
         files: ['**/*.{js,mjs,cjs}'],
         plugins: { js, unicorn: eslintPluginUnicorn },
         extends: ['js/recommended'],
-        languageOptions: { globals: globals.browser },
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                ...globals.mocha,
+            },
+        },
         rules: {
             // eslint base rules
             'no-lonely-if': 'error',
